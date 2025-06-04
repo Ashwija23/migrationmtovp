@@ -1,0 +1,59 @@
+2nd 
+Git init
+Git add .
+Git commit -m "initial commit"
+Git remote add origin url paste
+Git remote show origin
+Git push - u origin master
+Mvn clean install
+
+4th
+Mvn clean compile
+Mvn package
+Java - jar ./target/
+Gradle init --type pom
+Gradle clean build
+Java - jar ./build/lib/go to libs
+
+
+7th
+Open windows PowerShell
+Type 
+>wsl –install
+>wsl
+
+Open ubuntu
+Type
+>sudo apt upgrade
+>sudo apt install ansible -y
+>ansible --version
+>mkdir ansible_project
+>cd ansible_project
+>nano host
+It opens a tab there type
+>[local]
+>localhosts ansible_connection=local
+Press ctrl+o then enter again ctrl+x
+> ansible -i hosts local -m ping
+> nano install_nginx.yml
+It opens a tab there type-: 
+---
+- name: Install and start NGINX on localhost
+  hosts: local
+  become: yes
+
+  tasks:
+   - name: Install NGINX
+     apt:
+      name: nginx
+      state: present
+      update_cache: yes
+
+   - name: Ensure NGINX is running
+     service:
+      name: nginx
+      state: started
+      enabled: yes
+Press ctrl+o then enter again ctrl+x
+> ansible-playbook -i hosts install_nginx.yml
+> curl http://localhost
